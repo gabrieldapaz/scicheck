@@ -1,0 +1,34 @@
+# Versioned data: evaluation sets and the final fine-tuning files.
+# Raw inputs, full search dumps and intermediate files stay local.
+data/*
+!data/README.md
+!data/healthfc/
+!data/scifact/
+!data/covert/
+!data/healthver/
+!data/cer/
+!data/training/
+data/training/*
+!data/training/*_correct_only_sft.jsonl
+
+# Results and model weights are never versioned
+results/
+mlruns/
+adapters/
+*.safetensors
+*.bin
+*.tar.zst
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Python and tooling
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+*.log
+.DS_Store

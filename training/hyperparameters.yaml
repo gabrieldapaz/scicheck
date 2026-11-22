@@ -1,0 +1,31 @@
+# Fine-tuning jobs of the two SciCheck models (supervised fine-tuning with LoRA on the
+# Together AI platform). These are the parameters of the two jobs.
+
+training_file: data/training/train_gold_plus_web_search_correct_only_sft.jsonl        # 2,828 examples
+validation_file: data/training/validation_gold_plus_web_search_correct_only_sft.jsonl  # 319 examples
+
+common:
+  method: sft
+  lora:
+    r: 64
+    lora_alpha: 128
+    lora_dropout: 0.1
+    trainable_modules: all-linear   # q_proj, k_proj, v_proj, o_proj, up_proj, gate_proj, down_proj
+  n_epochs: 3
+  learning_rate: 5.0e-5
+  lr_scheduler: cosine
+  lr_scheduler_num_cycles: 0.5
+  warmup_ratio: 0
+  weight_decay: 0
+  max_grad_norm: 1
+  train_on_inputs: false        # loss computed only on the completion
+
+models:
+  llama:
+    base_model: meta-llama/Meta-Llama-3.1-8B-Instruct-Reference
+    batch_size: 32
+    released_as: scicheck-llama-3.1-8b
+  qwen:
+    base_model: Qwen/Qwen2.5-14B-Instruct
+    batch_size: 8
+    released_as: scicheck-qwen2.5-14b

@@ -1,0 +1,13 @@
+You are a professional fact-checker with expertise in verifying claims based on your knowledge.
+
+Claim: {claim}
+
+First, think step by step and write out your reasoning in a professional, analytical tone.
+Then, on a new line, output exactly one of:
+
+- If the claim is supported by your knowledge, output: <answer>SUPPORTED</answer>
+- If the claim is refuted by your knowledge, output: <answer>REFUTED</answer>
+
+No other answer formats will be accepted.
+
+Output:
